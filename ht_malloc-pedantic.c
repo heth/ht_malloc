@@ -48,9 +48,7 @@
  Terms..:  see http://www.gnu.org/licenses
  **************************************************************************/
 
-#include <stdio.h>
 #include <malloc.h>
-#include <time.h>
 
 
 // Define datatypes used
@@ -94,9 +92,6 @@ void *heapstart; // Start of heap-memory to allocate from
 pooldesc *pool;
 uint  *freelist;
 
-double time_pair, time_buddy; //DEBUG
-clock_t start_pair,start_buddy; //DEBUG
-uint counter;	// DEBUG
 ////////////////////////////////// UTILITY FUNCTIONS //////////////////////////
 // Calculate power of 2 for number.
 // Example: <number>=8 - returns 2^8 = 256
@@ -212,8 +207,6 @@ uint fl_bit_state( uint *fl, uint bitnr ) {
  int fl_find_buddy( uint *fl, uint avail) {
    uint cnt,i;
    uint bitnr, mask;
-counter++;
-start_buddy = clock(); // DEBUG
    // Traverse array testing each member..
 	cnt = avail / DATAWIDTH;
 	if ( (avail % DATAWIDTH) != 0) {	// If heapsize not fiting 2^N
@@ -223,7 +216,6 @@ start_buddy = clock(); // DEBUG
 	 	cnt--;
 		mask = ( ( (fl[cnt] & MASK55) << 1) | ( (fl[cnt] & MASKaa) >> 1 ) ) & ~fl[cnt];
     if (mask  != 0 ) {
-time_buddy=time_buddy + (double) clock() - start_buddy; //DEBUG
        // Yes there are - find the first free buddy
        bitnr=1; // Bit numbers are from 1 to DATAWIDTH
 

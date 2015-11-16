@@ -4,7 +4,6 @@ CC=gcc
 CFLAGS=-std=c99 -pedantic
 AOUT=ht
  
-#FILES=Makefile TimeOfDay.h TimeOfDay.cpp testtimeofday.cpp
 OBJECTS=main.o ht_malloc-pedantic.o
 
  
