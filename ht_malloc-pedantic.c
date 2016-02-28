@@ -48,9 +48,6 @@
  Terms..:  see http://www.gnu.org/licenses
  **************************************************************************/
 
-#include <malloc.h>
-
-
 // Define datatypes used
 
 typedef unsigned char				uint8;	// Adapt to your  8 bit unsigned datatype 
