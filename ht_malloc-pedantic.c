@@ -231,7 +231,6 @@ uint fl_bit_state( uint *fl, uint bitnr ) {
        return( bitnr + cnt*DATAWIDTH);
      }
    } while ( cnt > 0);
-   printf("NO FUCKING BUDDY PRESENT.....\n");
    return(0);
  }
 
@@ -387,7 +386,6 @@ void *mem_alloc( uint16 size ) {
 //           non-zero if the bit freed buddy is 1
 uint fl_free_buddy( uint *fl, uint bitnr ) {
 	uint member;
-	uint leg;
 	
 	// Find <fl[]> array member where bit is
 	member = bitnr >> DATAWIDTH_EXPONENT;
@@ -397,7 +395,7 @@ uint fl_free_buddy( uint *fl, uint bitnr ) {
 	bitnr++;	
 	// Set bitnumber to '0'
 	fl[member] = fl[member] & (~( 1 << (bitnr-1)));
-	leg = (~( 1 << (bitnr-1)));
+
 	//Check if <bitnr> buddy is set
 	if (bitnr % 2 != 0 ) { // If bit even buddy is left bit
 		bitnr++ ;
